@@ -1,6 +1,11 @@
 permissions:
   broadcast-msg: messagemanager.broadcast
   staff-chat: messagemanager.staffchat
+  msg: messagemanager.msg
+
+error-msgs:
+  no-permission: "&c&lERROR &7» &fYou do not have the correct permission for this command!"
+  not-enough-args: "&c&lERROR &7» &fYou haven't put enough arguments for this command."
 
 player-logging:
   # Join/Leave Placeholders
