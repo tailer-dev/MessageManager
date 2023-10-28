@@ -1,0 +1,6 @@
+name: MessageManager
+version: '${project.version}'
+main: me.tailer.messagemanager.MessageManager
+api-version: 1.20
+authors: [ tailerr ]
+description: Manage all messages on your server!

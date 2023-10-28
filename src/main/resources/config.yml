@@ -1,0 +1,40 @@
+permissions:
+  broadcast-msg: messagemanager.broadcast
+  staff-chat: messagemanager.staffchat
+
+player-logging:
+  # Join/Leave Placeholders
+  # %player_name% - player's username
+  # %player_displayname% - player's display name
+  join:
+    enabled: true
+    msg: "&a&lJOIN &7» &f%player_name% &ahas joined the game!"
+  leave:
+    enabled: true
+    msg: "&c&lLEAVE &7» &f%player_name% &chas left the game!"
+  first-time:
+    enabled: true
+    msg: "&3&lWELCOME &7» &f%player_name% &ahas joined the game for the first time!"
+
+staff-chat:
+  # Staff-Chat Placeholders
+  # %player_name% - player's username
+  # %player_displayname% - player's display name
+  # %message% - message sent to the staff-chat
+  enabled: true
+  quick-msg: "@" # Starting a message with this will auto go to staff-chat
+  msg-format: "&9&lSTAFFCHAT &7» &f%player_name% &c: &c%message%"
+  toggled-view:
+    on: "&9&l&9&lSTAFFCHAT &7» &cYou will see Staff-Chat Messages"
+    off: "&9&l&9&lSTAFFCHAT &7» &cYou will no longer see Staff-Chat Messages"
+  toggled:
+    on: "&9&l&9&lSTAFFCHAT &7» &cMessages by default will go to &astaff chat"
+    off: "&9&l&9&lSTAFFCHAT &7» &cMessages by default will go to &epublic chat"
+
+broadcast:
+  # Broadcast Placeholders
+  # %player_name% - player's username
+  # %player_displayname% - player's display name
+  # %message% - message sent to be broadcasted
+  enabled: true
+  msg: "&4&lBROADCAST &8[&c%player_name%&8] &7» &f%message%"
