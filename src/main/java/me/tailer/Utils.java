@@ -13,7 +13,6 @@ import java.util.UUID;
 
 public class Utils {
 
-
     public FileConfiguration configFile;
 
     public List<UUID> disabledStaffChat = new ArrayList<>();
@@ -30,28 +29,43 @@ public class Utils {
     public String messagePermission;
 
     public String noPermission;
+    public String notEnoughArgs;
 
     public String staffChatQuickAccess;
     public String staffChatFormat;
-    public String staffChatDisabledMessage;
+    public String staffChatViewDisabledMessage;
+    public String staffChatViewEnabledMessage;
+    public String staffChatDefaultEnabledMessage;
+    public String staffChatDefaultDisabledMessage;
+
+    public String broadcastMessage;
 
     public Utils(FileConfiguration configFile) {
         this.configFile = configFile;
 
         staffChatEnabled = configFile.getBoolean("staff-chat.enabled");
         broadcastEnabled = configFile.getBoolean("broadcast.enabled");
-        playerLoggingJoinEnabled = configFile.getBoolean("player-logging.join.enabled");
-        playerLoggingLeaveEnabled = configFile.getBoolean("player-logging.leave.enabled");
-        playerLoggingFirstTimeEnabled = configFile.getBoolean("player-logging.first-time.enabled");
+        playerLoggingJoinEnabled = configFile.getBoolean("player-logging.join-enabled");
+        playerLoggingLeaveEnabled = configFile.getBoolean("player-logging.leave-enabled");
+        playerLoggingFirstTimeEnabled = configFile.getBoolean("player-logging.first-time-enabled");
 
         broadcastPermission = configFile.getString("permissions.broadcast-msg");
         staffChatPermission = configFile.getString("permissions.staff-chat");
         messagePermission = configFile.getString("permissions.msg");
 
         noPermission = colorize(configFile.getString("error-msgs.no-permission"));
+        notEnoughArgs = colorize(configFile.getString("error-msgs.not-enough-args"));
 
         staffChatQuickAccess = configFile.getString("staff-chat.quick-msg");
         staffChatFormat = colorize(configFile.getString("staff-chat.msg-format"));
+
+        staffChatViewDisabledMessage = colorize(configFile.getString("staff-chat.toggled-view-off"));
+        staffChatViewEnabledMessage = colorize(configFile.getString("staff-chat.toggled-view-on"));
+
+        staffChatDefaultEnabledMessage = colorize(configFile.getString("staff-chat.toggled-on"));
+        staffChatDefaultDisabledMessage = colorize(configFile.getString("staff-chat.toggled-off"));
+
+        broadcastMessage = configFile.getString("broadcast.msg");
 
     }
 
@@ -62,10 +76,12 @@ public class Utils {
     public void sendStaffChatMessage(String msg, Player originalSender) {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.hasPermission(staffChatPermission) && !disabledStaffChat.contains(player.getUniqueId())) {
-                player.sendMessage(staffChatFormat
+                String msgToSend = staffChatFormat
                         .replace("%player_name%", originalSender.getName())
                         .replace("%player_displayname%", originalSender.getDisplayName())
-                        .replace("%message%", colorize(msg)));
+                        .replace("%message%", colorize(msg));
+                player.sendMessage(msgToSend);
+                Bukkit.getConsoleSender().sendMessage(msgToSend);
             }
         }
     }
@@ -77,19 +93,24 @@ public class Utils {
             if (player.hasPermission(staffChatPermission) && !disabledStaffChat.contains(player.getUniqueId())) {
 
                 if (isConsoleSending) {
-                    player.sendMessage(staffChatFormat
+                    String msgToSend = staffChatFormat
                             .replace("%player_name%", originalSender.getName())
                             .replace("%player_displayname%", originalSender.getName())
-                            .replace("%message%", colorize(msg)));
+                            .replace("%message%", colorize(msg));
+                    player.sendMessage(msgToSend);
+                    Bukkit.getConsoleSender().sendMessage(msgToSend);
                 } else {
                     Player originalPlayer = (Player) originalSender;
-                    player.sendMessage(staffChatFormat
+                    String msgToSend = staffChatFormat
                             .replace("%player_name%", originalPlayer.getName())
                             .replace("%player_displayname%", originalPlayer.getDisplayName())
-                            .replace("%message%", colorize(msg)));
+                            .replace("%message%", colorize(msg));
+                    player.sendMessage(msgToSend);
+                    Bukkit.getConsoleSender().sendMessage(msgToSend);
                 }
             }
         }
+
     }
 
 }

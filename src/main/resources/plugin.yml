@@ -1,6 +1,16 @@
 name: MessageManager
 version: '${project.version}'
-main: me.tailer.messagemanager.MessageManager
+main: me.tailer.MessageManager
 api-version: 1.20
 authors: [ tailerr ]
 description: Manage all messages on your server!
+
+commands:
+  sc:
+    usage: /<command>
+  scview:
+    usage: /<command>
+  sctoggle:
+    usage: /<command>
+  broadcast:
+    usage: /<command>

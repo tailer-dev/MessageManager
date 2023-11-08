@@ -20,13 +20,13 @@ public class PlayerLoggingEvent implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         if (!player.hasPlayedBefore() && utils.playerLoggingFirstTimeEnabled) {
-            Bukkit.broadcastMessage(utils.colorize(utils.configFile.getString("player-logging.first-time.msg")
+            Bukkit.broadcastMessage(utils.colorize(utils.configFile.getString("player-logging.first-time-msg")
                     .replace("%player_name%", player.getName())
                     .replace("%player_displayname%", player.getDisplayName())));
             return;
         }
         if (!utils.playerLoggingJoinEnabled) return;
-        event.setJoinMessage(utils.colorize(utils.configFile.getString("player-logging.join.msg")
+        event.setJoinMessage(utils.colorize(utils.configFile.getString("player-logging.join-msg")
                 .replace("%player_name%", player.getName()).replace("%player_displayname%", player.getDisplayName())));
     }
 
@@ -34,7 +34,7 @@ public class PlayerLoggingEvent implements Listener {
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         if (!utils.playerLoggingLeaveEnabled) return;
-        event.setQuitMessage(utils.colorize(utils.configFile.getString("player-logging.leave.msg")
+        event.setQuitMessage(utils.colorize(utils.configFile.getString("player-logging.leave-msg")
                 .replace("%player_name%", player.getName())
                 .replace("%player_displayname%", player.getDisplayName())));
     }
