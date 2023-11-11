@@ -23,6 +23,7 @@ public class Utils {
     public boolean playerLoggingJoinEnabled;
     public boolean playerLoggingLeaveEnabled;
     public boolean playerLoggingFirstTimeEnabled;
+    public boolean deathMessagesEnabled;
 
     public String broadcastPermission;
     public String staffChatPermission;
@@ -40,6 +41,8 @@ public class Utils {
 
     public String broadcastMessage;
 
+    public String playerDeathMsg;
+
     public Utils(FileConfiguration configFile) {
         this.configFile = configFile;
 
@@ -48,6 +51,7 @@ public class Utils {
         playerLoggingJoinEnabled = configFile.getBoolean("player-logging.join-enabled");
         playerLoggingLeaveEnabled = configFile.getBoolean("player-logging.leave-enabled");
         playerLoggingFirstTimeEnabled = configFile.getBoolean("player-logging.first-time-enabled");
+        deathMessagesEnabled = configFile.getBoolean("player-death-msgs.enabled");
 
         broadcastPermission = configFile.getString("permissions.broadcast-msg");
         staffChatPermission = configFile.getString("permissions.staff-chat");
@@ -66,6 +70,8 @@ public class Utils {
         staffChatDefaultDisabledMessage = colorize(configFile.getString("staff-chat.toggled-off"));
 
         broadcastMessage = configFile.getString("broadcast.msg");
+
+        playerDeathMsg = colorize(configFile.getString("player-death-msgs.death-msg"));
 
     }
 

@@ -2,6 +2,7 @@ package me.tailer;
 
 import me.tailer.commands.BroadcastCommand;
 import me.tailer.commands.StaffCommand;
+import me.tailer.events.DeathByMob;
 import me.tailer.events.PlayerLoggingEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
@@ -49,6 +50,12 @@ public final class MessageManager extends JavaPlugin {
             broadcastCommand.setExecutor(new BroadcastCommand(utils));
             broadcastCommand.setAliases(Collections.singletonList("bc"));
         }
+
+        if (utils.deathMessagesEnabled) {
+            getServer().getPluginManager().registerEvents(new DeathByMob(utils), this);
+        }
+
+
 
     }
 

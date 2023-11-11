@@ -22,12 +22,12 @@ player-logging:
   first-time-msg: "&3&lWELCOME &7» &f%player_name% &ahas joined the game for the first time!"
 
 staff-chat:
-  # Staff-Chat Placeholders #
-  # %player_name% - player's username #
-  # %player_displayname% - player's display name #
-  # %message% - message sent to the staff-chat #
+  # Staff-Chat Placeholders
+  # %player_name% - player's username
+  # %player_displayname% - player's display name
+  # %message% - message sent to the staff-chat
   enabled: true
-  quick-msg: "@" # Starting a message with this will auto go to staff-chat #
+  quick-msg: "@" # Starting a message with this will auto go to staff-chat
   msg-format: "&9&lSTAFFCHAT &7» &f%player_name% &c: &c%message%"
   # Staff Chat Messages being seen or not
   toggled-view-on: "&9&lSTAFFCHAT &7» &cYou will see Staff-Chat Messages"
@@ -43,3 +43,12 @@ broadcast:
   # %message% - message sent to be broadcasted
   enabled: true
   msg: "&4&lBROADCAST &8[&c%player_name%&8] &7» &f%message%"
+
+player-death-msgs:
+  # Player Death Placeholders
+  # %player_name% - player who died's name
+  # %player_displayname% - player who died's displayname
+  # %killer_name% - mob/player's name
+  # %killer_displayname% - mob/player's display name
+  enabled: true
+  death-msg: "&4&lDEATH &7» &e%player_name% &fhas been demolished by &c%killer_name%"

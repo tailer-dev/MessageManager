@@ -8,9 +8,17 @@ description: Manage all messages on your server!
 commands:
   sc:
     usage: /<command>
+    aliases:
+      - staffchat
   scview:
     usage: /<command>
+    aliases:
+      - staffchatview
   sctoggle:
     usage: /<command>
+    aliases:
+      - staffchattoggle
   broadcast:
     usage: /<command>
+    aliases:
+      - bc
