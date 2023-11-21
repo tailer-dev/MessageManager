@@ -19,7 +19,7 @@ public class BroadcastCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
 
-        if (label.equalsIgnoreCase("broadcast")) {
+        if (label.equalsIgnoreCase("broadcast") || label.equalsIgnoreCase("bc")) {
             if (!utils.broadcastEnabled) return true;
             if (sender.hasPermission(utils.broadcastPermission)) {
 

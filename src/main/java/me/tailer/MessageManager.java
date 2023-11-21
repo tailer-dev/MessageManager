@@ -1,6 +1,7 @@
 package me.tailer;
 
 import me.tailer.commands.BroadcastCommand;
+import me.tailer.commands.MessageCmd;
 import me.tailer.commands.StaffCommand;
 import me.tailer.events.DeathByMob;
 import me.tailer.events.PlayerLoggingEvent;
@@ -9,6 +10,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 public final class MessageManager extends JavaPlugin {
@@ -56,6 +58,14 @@ public final class MessageManager extends JavaPlugin {
         }
 
         if (utils.playerMessagingEnabled) {
+            MessageCmd messageCmd = new MessageCmd(utils);
+            PluginCommand messageCommand = getCommand("msg");
+            messageCommand.setExecutor(messageCmd);
+            messageCommand.setAliases(Arrays.asList("message", "m", "whisper"));
+
+            PluginCommand replyCommand = getCommand("reply");
+            replyCommand.setExecutor(messageCmd);
+            replyCommand.setAliases(Arrays.asList("r", "respond"));
 
         }
 

@@ -47,6 +47,7 @@ public class Utils {
 
     public String messagingFormatFromSelf;
     public String messagingFormatToPlayer;
+    public String messagingNooneToReplyTo;
 
     public Utils(FileConfiguration configFile) {
         this.configFile = configFile;
@@ -82,6 +83,7 @@ public class Utils {
 
         messagingFormatFromSelf = colorize(configFile.getString("messaging.format-from-player"));
         messagingFormatToPlayer = colorize(configFile.getString("messaging.format-to-player"));
+        messagingNooneToReplyTo = colorize(configFile.getString("messaging.no-one-to-reply-to"));
 
     }
 

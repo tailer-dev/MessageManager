@@ -55,6 +55,7 @@ messaging:
   enabled: true
   format-from-player: "&d&lMSG &7» &cME &f-> &c%receiver%&7: &f%message%"
   format-to-player: "&d&lMSG &7» &c%sender% &f-> &cME&7: &f%message%"
+  no-one-to-reply-to: "&d&lMSG &7» &cYou have no one to reply too!"
 
 player-death-msgs:
   # Player Death Placeholders

@@ -22,3 +22,14 @@ commands:
     usage: /<command>
     aliases:
       - bc
+  msg:
+    usage: /<command>
+    aliases:
+      - message
+      - m
+      - whisper
+  reply:
+    usage: /<command>
+    aliases:
+      - r
+      - respond

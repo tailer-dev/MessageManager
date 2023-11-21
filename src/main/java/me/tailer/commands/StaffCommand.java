@@ -4,6 +4,7 @@ import me.tailer.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,7 +25,7 @@ public class StaffCommand implements CommandExecutor, Listener {
 
         if (label.equalsIgnoreCase("sc") || label.equalsIgnoreCase("staffchat")) {
             if (!utils.staffChatEnabled) return true;
-            if (sender.hasPermission(utils.staffChatPermission)) {
+            if (sender.hasPermission(utils.staffChatPermission) || sender instanceof ConsoleCommandSender) {
                 StringBuilder stringBuilder = new StringBuilder();
 
                 for (String arg : args) {

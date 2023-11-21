@@ -27,12 +27,22 @@ public class MessageCmd implements CommandExecutor {
             return true;
         }
 
+        Player player = (Player) sender;
+        if (label.equals("msg") || label.equals("whisper") || label.equals("m") || label.equalsIgnoreCase("message")) {
+            if (!utils.playerMessagingEnabled) return true;
 
-        if (label.equals("msg") || label.equals("whisper") || label.equals("m")) {
-            Player player = (Player) sender;
+            if (!player.hasPermission(utils.messagePermission)) {
+                player.sendMessage(utils.noPermission);
+                return true;
+            }
+            if (args.length < 1) {
+                player.sendMessage(utils.notEnoughArgs);
+                return true;
+            }
+
             Player targetMessagePlayer = Bukkit.getPlayer(args[0]);
             if (targetMessagePlayer == null) {
-                sender.sendMessage(utils.playerOffline);
+                player.sendMessage(utils.playerOffline);
             } else {
 
                 if (args.length > 1) {
@@ -41,6 +51,8 @@ public class MessageCmd implements CommandExecutor {
                     for (int i = 1; i < args.length; i++) {
                         stringBuilder.append(args[i]).append(" ");
                     }
+
+                    playerReply.put(targetMessagePlayer.getUniqueId(), player.getUniqueId());
 
                     targetMessagePlayer.sendMessage(utils.messagingFormatToPlayer
                             .replace("%sender%", player.getName())
@@ -52,12 +64,54 @@ public class MessageCmd implements CommandExecutor {
                             .replace("%message%", utils.colorize(stringBuilder.toString())));
 
                 } else {
-                    sender.sendMessage(utils.notEnoughArgs);
+                    player.sendMessage(utils.notEnoughArgs);
                 }
 
             }
+            return true;
 
         }
+
+
+        if (label.equalsIgnoreCase("r") || label.equalsIgnoreCase("reply") || label.equalsIgnoreCase("respond")) {
+            if (!utils.playerMessagingEnabled) return true;
+            if (!player.hasPermission(utils.messagePermission)) {
+                player.sendMessage(utils.noPermission);
+                return true;
+            }
+
+            if (playerReply.containsKey(player.getUniqueId())) {
+
+                if (args.length == 0) {
+                    player.sendMessage(utils.notEnoughArgs);
+                    return true;
+                }
+
+                Player targetMessagePlayer = Bukkit.getPlayer(playerReply.get(player.getUniqueId()));
+
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < args.length; i++) {
+                    stringBuilder.append(args[i]).append(" ");
+                }
+
+                playerReply.put(targetMessagePlayer.getUniqueId(), player.getUniqueId());
+
+                targetMessagePlayer.sendMessage(utils.messagingFormatToPlayer
+                        .replace("%sender%", player.getName())
+                        .replace("%sender_displayname%", player.getDisplayName())
+                        .replace("%message%", utils.colorize(stringBuilder.toString())));
+                player.sendMessage(utils.messagingFormatFromSelf
+                        .replace("%receiver%", targetMessagePlayer.getName())
+                        .replace("%receiver_displayname%", targetMessagePlayer.getDisplayName())
+                        .replace("%message%", utils.colorize(stringBuilder.toString())));
+
+            } else {
+                player.sendMessage(utils.messagingNooneToReplyTo);
+            }
+            return true;
+        }
+
+
 
 
         return true;
