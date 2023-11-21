@@ -55,6 +55,10 @@ public final class MessageManager extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new DeathByMob(utils), this);
         }
 
+        if (utils.playerMessagingEnabled) {
+
+        }
+
 
 
     }

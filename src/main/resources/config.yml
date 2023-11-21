@@ -5,7 +5,8 @@ permissions:
 
 error-msgs:
   no-permission: "&c&lERROR &7» &fYou do not have the correct permission for this command!"
-  not-enough-args: "&c&lERROR &7» &fYou haven't put enough arguments for this command."
+  not-enough-args: "&c&lERROR &7» &fYou haven't put enough arguments for this command!"
+  player-offline: "&c&lERROR &7» &fThis player can't be found or is offline!"
 
 player-logging:
   # Join/Leave Placeholders
@@ -43,6 +44,17 @@ broadcast:
   # %message% - message sent to be broadcasted
   enabled: true
   msg: "&4&lBROADCAST &8[&c%player_name%&8] &7» &f%message%"
+
+messaging:
+  # Player Messaging Placeholders
+  # %receiver% - receiver's name who message was sent too from the sender
+  # %receiver_displayname% - receiver's displayname who message was sent too from the sender
+  # %sender% - player's name who sent the message
+  # %sender_displayname% - player's displayname who sent the message
+  # %message% - message that was sent
+  enabled: true
+  format-from-player: "&d&lMSG &7» &cME &f-> &c%receiver%&7: &f%message%"
+  format-to-player: "&d&lMSG &7» &c%sender% &f-> &cME&7: &f%message%"
 
 player-death-msgs:
   # Player Death Placeholders

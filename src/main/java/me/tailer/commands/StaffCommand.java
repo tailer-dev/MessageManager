@@ -23,15 +23,14 @@ public class StaffCommand implements CommandExecutor, Listener {
 
 
         if (label.equalsIgnoreCase("sc") || label.equalsIgnoreCase("staffchat")) {
+            if (!utils.staffChatEnabled) return true;
             if (sender.hasPermission(utils.staffChatPermission)) {
-                if (utils.staffChatEnabled) {
-                    StringBuilder stringBuilder = new StringBuilder();
+                StringBuilder stringBuilder = new StringBuilder();
 
-                    for (String arg : args) {
-                        stringBuilder.append(arg).append(" ");
-                    }
-                    utils.sendStaffChatMessage(stringBuilder.toString(), sender);
+                for (String arg : args) {
+                    stringBuilder.append(arg).append(" ");
                 }
+                utils.sendStaffChatMessage(stringBuilder.toString(), sender);
             } else {
                 sender.sendMessage(utils.noPermission);
             }
@@ -39,7 +38,7 @@ public class StaffCommand implements CommandExecutor, Listener {
         }
 
         if (label.equalsIgnoreCase("scview") || label.equalsIgnoreCase("staffchatview")) {
-
+            if (!utils.staffChatEnabled) return true;
             if (sender.hasPermission(utils.staffChatPermission)) {
 
                 if (sender instanceof Player) {
@@ -60,7 +59,7 @@ public class StaffCommand implements CommandExecutor, Listener {
         }
 
         if (label.equalsIgnoreCase("sctoggle") || label.equalsIgnoreCase("staffchattoggle")) {
-
+            if (!utils.staffChatEnabled) return true;
             if (sender.hasPermission(utils.staffChatPermission)) {
                 if (sender instanceof Player) {
                     Player player = (Player) sender;

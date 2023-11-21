@@ -21,6 +21,7 @@ public class DeathByMob implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
+        if (!utils.deathMessagesEnabled) return;
         Player deadPlayer = event.getEntity();
         Player killerPlayer = event.getEntity().getKiller();
         if (killerPlayer == null) {
@@ -38,7 +39,7 @@ public class DeathByMob implements Listener {
 
     @EventHandler
     public void onDeathByMob(EntityDamageByEntityEvent event) {
-
+        if (!utils.deathMessagesEnabled) return;
         if (!(event.getDamager().getType() == EntityType.PLAYER) && event.getEntity().getType() == EntityType.PLAYER) {
             Entity entity = event.getDamager();
             Player p = (Player) event.getEntity();

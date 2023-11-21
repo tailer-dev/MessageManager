@@ -20,6 +20,7 @@ public class BroadcastCommand implements CommandExecutor {
 
 
         if (label.equalsIgnoreCase("broadcast")) {
+            if (!utils.broadcastEnabled) return true;
             if (sender.hasPermission(utils.broadcastPermission)) {
 
                 if (args.length == 0) {

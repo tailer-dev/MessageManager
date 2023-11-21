@@ -24,6 +24,7 @@ public class Utils {
     public boolean playerLoggingLeaveEnabled;
     public boolean playerLoggingFirstTimeEnabled;
     public boolean deathMessagesEnabled;
+    public boolean playerMessagingEnabled;
 
     public String broadcastPermission;
     public String staffChatPermission;
@@ -31,6 +32,7 @@ public class Utils {
 
     public String noPermission;
     public String notEnoughArgs;
+    public String playerOffline;
 
     public String staffChatQuickAccess;
     public String staffChatFormat;
@@ -43,6 +45,9 @@ public class Utils {
 
     public String playerDeathMsg;
 
+    public String messagingFormatFromSelf;
+    public String messagingFormatToPlayer;
+
     public Utils(FileConfiguration configFile) {
         this.configFile = configFile;
 
@@ -52,6 +57,7 @@ public class Utils {
         playerLoggingLeaveEnabled = configFile.getBoolean("player-logging.leave-enabled");
         playerLoggingFirstTimeEnabled = configFile.getBoolean("player-logging.first-time-enabled");
         deathMessagesEnabled = configFile.getBoolean("player-death-msgs.enabled");
+        playerMessagingEnabled = configFile.getBoolean("messaging.enabled");
 
         broadcastPermission = configFile.getString("permissions.broadcast-msg");
         staffChatPermission = configFile.getString("permissions.staff-chat");
@@ -59,6 +65,7 @@ public class Utils {
 
         noPermission = colorize(configFile.getString("error-msgs.no-permission"));
         notEnoughArgs = colorize(configFile.getString("error-msgs.not-enough-args"));
+        playerOffline = colorize(configFile.getString("error-msgs.player-offline"));
 
         staffChatQuickAccess = configFile.getString("staff-chat.quick-msg");
         staffChatFormat = colorize(configFile.getString("staff-chat.msg-format"));
@@ -72,6 +79,9 @@ public class Utils {
         broadcastMessage = configFile.getString("broadcast.msg");
 
         playerDeathMsg = colorize(configFile.getString("player-death-msgs.death-msg"));
+
+        messagingFormatFromSelf = colorize(configFile.getString("messaging.format-from-player"));
+        messagingFormatToPlayer = colorize(configFile.getString("messaging.format-to-player"));
 
     }
 
